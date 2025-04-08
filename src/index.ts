@@ -7,10 +7,12 @@ import fs from "fs";
 import { regret, strategy } from "./strategy";
 
 for (let j = 1; j <= 6000; j++) {
-  for (let i = 0; i < 2000; i++) {
+  console.time("イテレーション");
+  for (let i = 0; i < 10000; i++) {
     play();
   }
-  console.log(`${j * 2000}のイテレーションが終了`);
+  console.timeEnd("イテレーション");
+  console.log(`${j * 10000}のイテレーションが終了`);
   fs.writeFileSync(
     "handrange.js",
     `const range = ${JSON.stringify(strategy)};`
